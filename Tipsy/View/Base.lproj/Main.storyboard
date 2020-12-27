@@ -204,7 +204,7 @@
                         <outlet property="tenPercentButton" destination="7y6-Kf-yF0" id="0fI-km-AdS"/>
                         <outlet property="twentPercentButton" destination="UtR-dU-EKt" id="Djv-0d-d2w"/>
                         <outlet property="zeroPercentButton" destination="XzR-0E-Xf7" id="KpD-FN-ss1"/>
-                        <segue destination="Dnf-m2-FPm" kind="presentation" identifier="goToBill" id="noQ-pn-dYb"/>
+                        <segue destination="Dnf-m2-FPm" kind="presentation" identifier="goToBill" id="wpM-6f-Znr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -294,13 +294,13 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="billSplitDetails" destination="HGt-bn-sCv" id="SsC-ia-aRf"/>
+                        <outlet property="billSplitDetailLabel" destination="HGt-bn-sCv" id="HiP-BX-kq0"/>
                         <outlet property="totalPerPersonLabel" destination="uLJ-ii-hft" id="8FG-9e-sf0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uLi-Eb-NGd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="893" y="118"/>
+            <point key="canvasLocation" x="945" y="118"/>
         </scene>
     </scenes>
 </document>

@@ -12,14 +12,14 @@ import UIKit
 
 class BillViewController: UIViewController {
     @IBOutlet weak var totalPerPersonLabel: UILabel!
-    @IBOutlet weak var billSplitDetailsLabel: UILabel!
+    @IBOutlet weak var billSplitDetailLabel: UILabel!
     
     var totalPerPerson: String?
-    var billSplitDetailsText: String?
+    var billSplitDetails: String?
 
     override func viewDidLoad() {
         totalPerPersonLabel.text = self.totalPerPerson
-        billSplitDetailsLabel.text = self.billSplitDetailsText
+        billSplitDetailLabel.text = self.billSplitDetails
         
     }
     @IBAction func recalculateButtonPressed(_ sender: UIButton) {

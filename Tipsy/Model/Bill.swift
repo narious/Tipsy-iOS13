@@ -13,5 +13,8 @@ struct Bill {
     let costPP: Float
     let tip: Float
     
+    func totalCost() -> Float {
+        return Float(numPeople) * costPP
+    }
     
 }

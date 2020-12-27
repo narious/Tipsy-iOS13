@@ -19,32 +19,48 @@ class CaculatorViewController: UIViewController {
     
     @IBOutlet weak var numPeopleLabel: UILabel!
     
-    var calculator = CalculatorBrain()
+    var billCalculator = CalculatorBrain()
+    var buttonArray: [UIButton]! //     Force create the array
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        buttonArray = [zeroPercentButton,tenPercentButton, twentPercentButton]
     }
 
     @IBAction func tipPercentButtonPressed(_ sender: UIButton) {
-        print(sender.titleLabel?.text ?? "None")
+        buttonArray.forEach{
+            $0.isSelected = false
+        }
+        sender.isSelected = true
         
     }
     
     @IBAction func stepperButtonPressed(_ sender: UIStepper) {
-        print(sender.value)
+        numPeopleLabel.text = String(format: "%.0f", sender.value)
     }
     
     @IBAction func calculateButtonPressed(_ sender: UIButton) {
-        // let tip = tip == "0%" ? 1 : tip == "10%" ? 1.1 : 1.2;
-        // calculator.calculateBill(numPeople: numPeopleLabel.text , totalCost: <#T##Float#>, tip: <#T##String#>)
-        // self.performSegue(withIdentifier: "goToResult", sender: self)
+        var tipString: String = "0%"
+        for button in buttonArray {
+            if (button.isSelected) {
+                tipString = button.titleLabel!.text!
+            }
+        }
+        // Should do try catch incase they type in letters
+        let amount = Float(billAmount.text!) ?? 0.0
+        let people = Int(numPeopleLabel.text!) ?? 0
+        let tipFloat = tipString == "0%" ? 1.0 : tipString == "10%" ? 1.1 : 1.2;
+        billCalculator.calculateBill(numPeople: people, totalCost: amount, tip: Float(tipFloat))
+        self.performSegue(withIdentifier: "goToBill", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "goToBill") {
-            let billVC = segue.destination
-            
+            let billVC = segue.destination as! BillViewController
+            billVC.totalPerPerson = String(format: "$%.2f", billCalculator.getCostPP())
+            billVC.billSplitDetails = billCalculator.getBillDescription()
+
         }
     }
 }
